@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Team Luxura staff application dashboard.">
+  <title>Applications Dashboard - Team Luxura</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-ambient"></div>
+
+  <nav class="navbar">
+    <a href="Home.html" class="nav-logo"><span>Luxura</span></a>
+    <ul class="nav-links">
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Roster.html">Roster</a></li>
+      <li><a href="Roles.html">Roles</a></li>
+      <li><a href="Apply.html">Apply</a></li>
+      <li><a href="Social.html">Social</a></li>
+      <li><a href="Applications.html">Staff</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="Home.html">Home</a>
+    <a href="Roster.html">Roster</a>
+    <a href="Roles.html">Roles</a>
+    <a href="Apply.html">Apply</a>
+    <a href="Social.html">Social</a>
+    <a href="Applications.html">Staff</a>
+  </div>
+
+  <main>
+    <div class="page-hero fade-in">
+      <h1 class="page-hero-title">Applications</h1>
+      <p class="page-hero-sub">Staff Dashboard</p>
+    </div>
+
+    <section class="section" style="padding-top: 1rem;">
+      <div class="applications-wrap">
+        <div class="applications-login glass-card fade-in" id="staff-login-card">
+          <h2 class="applications-title">Staff Access</h2>
+          <p class="applications-sub">Enter your staff username and password to view all submitted applications.</p>
+          <form id="staff-login-form" class="applications-login-form" novalidate>
+            <label class="form-label" for="staff-username">Username</label>
+            <input id="staff-username" type="text" class="form-input" placeholder="Enter staff username" required>
+            <label class="form-label" for="staff-password">Password</label>
+            <input id="staff-password" type="password" class="form-input" placeholder="Enter staff password" required>
+            <button type="submit" class="form-submit">Open Dashboard</button>
+            <p id="staff-login-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="applications-panel glass-card fade-in" id="applications-panel" hidden>
+          <div class="applications-panel-head">
+            <div>
+              <h2 class="applications-title">Submitted Applications</h2>
+              <p class="applications-sub" id="applications-meta">Loading...</p>
+            </div>
+            <button type="button" id="refresh-applications" class="btn btn-secondary">Refresh</button>
+          </div>
+
+          <div class="applications-table-wrap">
+            <table class="applications-table" id="applications-table">
+              <thead>
+                <tr>
+                  <th>Submitted</th>
+                  <th>Name</th>
+                  <th>Discord</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Age</th>
+                  <th>Country</th>
+                  <th>Message</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="applications-body"></tbody>
+            </table>
+          </div>
+
+          <p id="applications-empty" class="applications-empty" hidden>No applications found yet.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-logo">Team Luxura</span>
+    <p>Staff dashboard access is restricted to approved users.</p>
+  </footer>
+
+  <div class="application-modal" id="application-modal" hidden>
+    <div class="application-modal-backdrop" id="application-modal-backdrop"></div>
+    <div class="application-modal-card" role="dialog" aria-modal="true" aria-labelledby="application-modal-title">
+      <div class="application-modal-head">
+        <h3 id="application-modal-title">Application Review</h3>
+        <button type="button" class="application-modal-close" id="application-modal-close" aria-label="Close review">Close</button>
+      </div>
+
+      <div class="application-modal-grid">
+        <div class="application-modal-item">
+          <span>Submitted</span>
+          <strong id="modal-submitted">-</strong>
+        </div>
+        <div class="application-modal-item">
+          <span>Name</span>
+          <strong id="modal-name">-</strong>
+        </div>
+        <div class="application-modal-item">
+          <span>Discord</span>
+          <strong id="modal-discord">-</strong>
+        </div>
+        <div class="application-modal-item">
+          <span>Role</span>
+          <strong id="modal-role">-</strong>
+        </div>
+        <div class="application-modal-item">
+          <span>Age</span>
+          <strong id="modal-age">-</strong>
+        </div>
+        <div class="application-modal-item">
+          <span>Country</span>
+          <strong id="modal-country">-</strong>
+        </div>
+      </div>
+
+      <div class="application-modal-status">
+        <label class="form-label" for="modal-status">Review Status</label>
+        <select id="modal-status" class="form-select">
+          <option value="Pending/Waiting">Pending/Waiting</option>
+          <option value="Approved">Approved</option>
+          <option value="Declined">Declined</option>
+        </select>
+        <p id="modal-status-feedback" class="form-status" aria-live="polite"></p>
+      </div>
+
+      <div class="application-modal-message">
+        <span>Application Message</span>
+        <p id="modal-message">-</p>
+      </div>
+
+      <div class="application-modal-actions">
+        <button type="button" id="modal-close-only" class="btn btn-secondary">Close</button>
+        <button type="button" id="modal-approve-close" class="btn btn-primary">Mark Approved And Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="delete-confirm-modal" id="delete-confirm-modal" hidden>
+    <div class="delete-confirm-backdrop" id="delete-confirm-backdrop"></div>
+    <div class="delete-confirm-card" role="dialog" aria-modal="true" aria-labelledby="delete-confirm-title">
+      <h3 id="delete-confirm-title">Delete Application?</h3>
+      <p class="delete-confirm-text">Are you sure you want to delete this application? This cannot be undone.</p>
+      <div class="delete-confirm-actions">
+        <button type="button" id="delete-confirm-no" class="btn btn-secondary">No, Keep It</button>
+        <button type="button" id="delete-confirm-yes" class="btn btn-danger">Yes, Delete</button>
+      </div>
+      <p id="delete-confirm-status" class="form-status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

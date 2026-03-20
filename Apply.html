@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply to Team Luxura — Join our competitive esports organization.">
+  <title>Apply — Team Luxura</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-ambient"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="Home.html" class="nav-logo"><span>Luxura</span></a>
+    <ul class="nav-links">
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Roster.html">Roster</a></li>
+      <li><a href="Roles.html">Roles</a></li>
+      <li><a href="Apply.html">Apply</a></li>
+      <li><a href="Social.html">Social</a></li>
+      <li><a href="Applications.html">Staff</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="Home.html">Home</a>
+    <a href="Roster.html">Roster</a>
+    <a href="Roles.html">Roles</a>
+    <a href="Apply.html">Apply</a>
+    <a href="Social.html">Social</a>
+    <a href="Applications.html">Staff</a>
+  </div>
+
+  <main>
+    <div class="page-hero fade-in">
+      <h1 class="page-hero-title">Apply</h1>
+      <p class="page-hero-sub">Join Team Luxura</p>
+    </div>
+
+    <div class="section">
+      <div class="apply-container">
+
+        <div class="section-header fade-in" style="margin-bottom:2.5rem;">
+          <span class="section-tag">Applications Open</span>
+          <h2 class="section-title">Join the Roster</h2>
+          <div class="section-divider"></div>
+          <p class="section-desc">
+            Think you have what it takes? Fill out the form below and a staff member
+            will reach out via Discord.
+          </p>
+        </div>
+
+        <div class="form-card fade-in fade-in-delay-1">
+          <div class="apply-progress" aria-live="polite">
+            <div class="apply-progress-head">
+              <span>Application Progress</span>
+              <span id="apply-progress-text">0% complete</span>
+            </div>
+            <div class="apply-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Application form completion">
+              <span class="apply-progress-fill" id="apply-progress-fill"></span>
+            </div>
+          </div>
+
+          <form id="apply-form" novalidate>
+
+            <!-- Name + Discord Row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f-name">Your Name</label>
+                <input
+                  type="text"
+                  id="f-name"
+                  class="form-input"
+                  placeholder="In-game / preferred name"
+                  required
+                  autocomplete="off"
+                  maxlength="64"
+                >
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-discord">Discord</label>
+                <input
+                  type="text"
+                  id="f-discord"
+                  class="form-input"
+                  placeholder="username"
+                  required
+                  autocomplete="off"
+                  maxlength="64"
+                >
+                <p class="form-info">e.g. username or username#0000</p>
+              </div>
+            </div>
+
+            <!-- Role -->
+            <div class="form-group">
+              <label class="form-label" for="f-role">Applying For</label>
+              <select id="f-role" class="form-select" required>
+                <option value="" disabled selected>Select a role…</option>
+                <option value="competitive">Competitive</option>
+                <option value="cch">CCH</option>
+                <option value="freestyler">Freestyler</option>
+                <option value="no-flipper">No Flipper</option>
+                <option value="vfx">VFX</option>
+                <option value="gfx">GFX</option>
+                <option value="content-creator">Content Creator</option>
+                <option value="staff">Staff</option>
+              </select>
+            </div>
+
+            <!-- Age + Country Row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f-age">Age</label>
+                <input
+                  type="number"
+                  id="f-age"
+                  class="form-input"
+                  placeholder="Your age"
+                  min="1"
+                  max="99"
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-country">Country</label>
+                <input
+                  type="text"
+                  id="f-country"
+                  class="form-input"
+                  placeholder="Your country"
+                  required
+                  maxlength="64"
+                >
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label class="form-label" for="f-message">Tell Us About Yourself</label>
+              <textarea
+                id="f-message"
+                class="form-textarea"
+                placeholder="Why do you want to join Team Luxura? What experience or skills do you bring? Include any relevant links (Twitch / YouTube / portfolio)."
+                required
+                maxlength="1500"
+              ></textarea>
+              <p class="form-info">Max 1500 characters. Be specific — tell us what makes you stand out.</p>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="form-submit">Submit Application</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+
+          </form>
+        </div>
+
+        <!-- Notice -->
+        <p class="fade-in fade-in-delay-2" style="text-align:center; margin-top:1.5rem; font-size:0.8rem; color:var(--text-muted); line-height:1.7;">
+          Applications are reviewed by our staff team. Due to volume, only successful
+          applicants will be contacted. Check out our <a href="Roles.html" style="color:var(--purple-light); text-decoration:none;">Roles page</a> for more info on each position.
+        </p>
+
+        <section class="faq-wrap fade-in fade-in-delay-3" aria-label="Application FAQ">
+          <h3 class="faq-title">Application FAQ</h3>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              How long do applications take to review?
+            </button>
+            <div class="faq-answer" hidden>
+              Reviews typically take 3-7 days, depending on volume and role demand.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Can I apply for more than one role?
+            </button>
+            <div class="faq-answer" hidden>
+              Yes. Submit your strongest role first, then mention secondary interests in your message.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              What should I include to stand out?
+            </button>
+            <div class="faq-answer" hidden>
+              Include your experience level, consistent availability, and links to relevant work or clips.
+            </div>
+          </article>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-logo">Team Luxura</span>
+    <p>© Team Luxura — All rights reserved</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
