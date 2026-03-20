@@ -550,13 +550,15 @@ if (applyForm) {
     setStatus(statusEl, 'loading', 'Submitting your application...');
 
     try {
+      const formData = new URLSearchParams();
+      Object.entries(payload).forEach(([key, value]) => formData.append(key, String(value)));
+
       const response = await fetch(APPLICATIONS_API_BASE, {
         method: 'POST',
         headers: {
-          // text/plain avoids preflight while still carrying JSON content
-          'Content-Type': 'text/plain;charset=utf-8'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify(payload)
+        body: formData.toString()
       });
 
       const raw = await response.text();
