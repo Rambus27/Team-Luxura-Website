@@ -340,20 +340,6 @@ if (hamburger && mobileMenu) {
   });
 }
 
-const initMobileApplyCta = () => {
-  if (document.querySelector('.mobile-apply-cta')) return;
-  if (currentPage.toLowerCase() === 'apply.html') return;
-
-  const cta = document.createElement('a');
-  cta.href = 'Apply.html';
-  cta.className = 'mobile-apply-cta';
-  cta.textContent = 'Apply Now';
-  cta.setAttribute('aria-label', 'Open application form');
-  document.body.appendChild(cta);
-};
-
-initMobileApplyCta();
-
 /* ==================== FADE-IN ON SCROLL ==================== */
 const observerOptions = {
   threshold: 0.07,

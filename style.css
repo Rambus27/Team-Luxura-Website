@@ -2057,7 +2057,6 @@ footer p {
   .roster-controls .form-input,
   .roster-controls .form-select { max-width: none !important; }
   .faq-wrap { padding: 0.85rem; }
-  .mobile-apply-cta { display: inline-flex; }
   .back-to-top { right: 0.75rem; bottom: 4.4rem; }
   .settings-fab { width: 42px; height: 42px; right: 0.75rem; bottom: 0.75rem; }
   .settings-panel { right: 0.75rem; bottom: 4rem; }
